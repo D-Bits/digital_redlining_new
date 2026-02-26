@@ -8,7 +8,7 @@ def fact_geo():
 
     df = spark.read.format('csv').option("header", "true").load('/Volumes/digital_redlining/mobile_fcc/src_files/fcc_mobile_full_data.csv')
     df = df.withColumn('id', monotonically_increasing_id())
-    df = df.select(['id','area_data_type','geography_type','geography_desc'])
+    df = df.select(['id', 'geography_id', 'area_data_type','geography_type','geography_desc'])
 
     return df
 
@@ -18,7 +18,7 @@ def dim_3g():
 
     df = spark.read.format('csv').option("header", "true").load('/Volumes/digital_redlining/mobile_fcc/src_files/fcc_mobile_full_data.csv')
     df = df.withColumn('id', monotonically_increasing_id())
-    df = df.select(['id','mobilebb_3g_area_st_pct','mobilebb_3g_area_iv_pct'])
+    df = df.select(['id', 'geography_id', 'mobilebb_3g_area_st_pct','mobilebb_3g_area_iv_pct'])
 
     return df
 
@@ -28,7 +28,7 @@ def dim_4g():
 
     df = spark.read.format('csv').option("header", "true").load('/Volumes/digital_redlining/mobile_fcc/src_files/fcc_mobile_full_data.csv')
     df = df.withColumn('id', monotonically_increasing_id())
-    df = df.select(['id','mobilebb_4g_area_st_pct','mobilebb_4g_area_iv_pct'])
+    df = df.select(['id', 'geography_id', 'mobilebb_4g_area_st_pct','mobilebb_4g_area_iv_pct'])
 
     return df
 
@@ -37,7 +37,7 @@ def dim_5g():
 
     df = spark.read.format('csv').option("header", "true").load('/Volumes/digital_redlining/mobile_fcc/src_files/fcc_mobile_full_data.csv')
     df = df.withColumn('id', monotonically_increasing_id())
-    df = df.select(['id','mobilebb_5g_spd1_area_st_pct','mobilebb_5g_spd1_area_iv_pct','mobilebb_5g_spd2_area_st_pct','mobilebb_5g_spd2_area_iv_pct'])
+    df = df.select(['id', 'geography_id', 'mobilebb_5g_spd1_area_st_pct','mobilebb_5g_spd1_area_iv_pct','mobilebb_5g_spd2_area_st_pct','mobilebb_5g_spd2_area_iv_pct'])
 
     return df 
     
