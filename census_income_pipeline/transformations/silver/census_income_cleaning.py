@@ -15,6 +15,8 @@ def fact_geo():
     df = df.select("id", "geography_id", "geography_desc", "total_households")
     # Drop the first row containing header descriptions
     df = df.where(f.col("id") != 0)
+    # Drop the 310700US prefix from the geo ids
+    df = df.withColumn("geography_id", f.expr("substring(geography_id, 10, length(geography_id)-9)"))
 
     return df 
 
@@ -23,6 +25,7 @@ def fact_geo():
 def dim_race_income():
 
     df = spark.read.table("census_income.raw_combined")
+    
     df = df.withColumnRenamed("GEO_ID", "geography_id")
     df = df.withColumnRenamed("S1903_C01_002E", "median_white_income")
     df = df.withColumnRenamed("S1903_C01_003E", "median_black_income")
@@ -35,6 +38,9 @@ def dim_race_income():
     df = df.withColumn("id", f.monotonically_increasing_id())
     # Drop the first row containing header descriptions
     df = df.where(f.col("id") != 0)
+    # Drop the 310700US prefix from the geo ids
+    df = df.withColumn("geography_id", f.expr("substring(geography_id, 10, length(geography_id)-9)"))
+
     df = df.select(
         "id", 
         "geography_id", 
