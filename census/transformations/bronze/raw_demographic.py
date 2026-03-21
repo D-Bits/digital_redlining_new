@@ -7,7 +7,7 @@ import requests
 def raw_national_demographic():
 
     # Extract JSON
-    res = requests.get("https://api.census.gov/data/2020/dec/pl?get=GEO_ID,NAME,P1_001N,P1_003N,P1_004N,P1_005N,P1_006N,P1_007N,P1_008N,P1_009N,P2_001N,P2_002N,H1_001N,H1_002N&ucgid=0100000US").json()
+    res = requests.get("https://api.census.gov/data/2020/dec/pl?get=GEO_ID,NAME,P1_001N,P1_003N,P1_004N,P1_005N,P1_006N,P1_007N,P1_008N,P1_009N,P2_001N,P2_002N&ucgid=0100000US").json()
     columns = res[0]
     data = res[1:]
 
@@ -21,7 +21,7 @@ def raw_national_demographic():
 def raw_state_demographic():
 
     # Extract JSON
-    res = requests.get("https://api.census.gov/data/2020/dec/pl?get=GEO_ID,NAME,P1_001N,P1_003N,P1_004N,P1_005N,P1_006N,P1_007N,P1_008N,P1_009N,P2_001N,P2_002N,H1_001N,H1_002N&for=state").json()
+    res = requests.get("https://api.census.gov/data/2020/dec/pl?get=GEO_ID,NAME,P1_001N,P1_003N,P1_004N,P1_005N,P1_006N,P1_007N,P1_008N,P1_009N,P2_001N,P2_002N&for=state").json()
     columns = res[0]
     data = res[1:]
 
@@ -35,7 +35,7 @@ def raw_state_demographic():
 def raw_county_demographic():
 
     # Extract JSON
-    res = requests.get("https://api.census.gov/data/2020/dec/pl?get=GEO_ID,NAME,P1_001N,P1_003N,P1_004N,P1_005N,P1_006N,P1_007N,P1_008N,P1_009N,P2_001N,P2_002N,H1_001N,H1_002N&for=county").json()
+    res = requests.get("https://api.census.gov/data/2020/dec/pl?get=GEO_ID,NAME,P1_001N,P1_003N,P1_004N,P1_005N,P1_006N,P1_007N,P1_008N,P1_009N,P2_001N,P2_002N&for=county").json()
     columns = res[0]
     data = res[1:]
 
@@ -49,7 +49,7 @@ def raw_county_demographic():
 def raw_msa_demographic():
 
     # Extract JSON
-    res = requests.get("https://api.census.gov/data/2020/dec/pl?get=GEO_ID,NAME,P1_001N,P1_003N,P1_004N,P1_005N,P1_006N,P1_007N,P1_008N,P1_009N,P2_001N,P2_002N,H1_001N,H1_002N&ucgid=pseudo(0100000US$3100000)").json()
+    res = requests.get("https://api.census.gov/data/2020/dec/pl?get=GEO_ID,NAME,P1_001N,P1_003N,P1_004N,P1_005N,P1_006N,P1_007N,P1_008N,P1_009N,P2_001N,P2_002N&ucgid=pseudo(0100000US$3100000)").json()
     columns = res[0]
     data = res[1:]
 
