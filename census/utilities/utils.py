@@ -2,6 +2,18 @@ from pyspark.sql.functions import udf
 from pyspark.sql.types import BooleanType
 import re
 
+
+# Define necessary data validations for bronze pipelines
+bronze_validations = {
+	'no_null_geoids': 'GEO_ID IS NOT NULL',
+}
+
+# Define necessary data validations for silver pipelines
+silver_validations = {
+	'no_null_geoids': 'geo_id IS NOT NULL',
+}
+
+
 @udf(returnType=BooleanType())
 def is_valid_email(email):
     """
