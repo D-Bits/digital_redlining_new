@@ -1,9 +1,11 @@
 import pyspark.sql.functions as F
 import pyspark.pipelines as dp
+from utilities.utils import bronze_validations
 import requests
 
 
-@dp.materialized_view(name="census_bronze.raw_demographic_national")
+@dp.expect_all_or_fail(bronze_validations)
+@dp.materialized_view(name="bronze_census.raw_demographic_national")
 def raw_national_demographic():
 
     # Extract JSON
@@ -15,8 +17,9 @@ def raw_national_demographic():
     df = spark.createDataFrame(data, columns)
 
     return df
+    
 
-
+@dp.expect_all_or_fail(bronze_validations)
 @dp.materialized_view(name="bronze_census.raw_demographic_state")
 def raw_state_demographic():
 
@@ -31,6 +34,7 @@ def raw_state_demographic():
     return df
 
 
+@dp.expect_all_or_fail(bronze_validations)
 @dp.materialized_view(name="bronze_census.raw_demographic_county")
 def raw_county_demographic():
 
@@ -45,6 +49,7 @@ def raw_county_demographic():
     return df
 
 
+@dp.expect_all_or_fail(bronze_validations)
 @dp.materialized_view(name="bronze_census.raw_demographic_msa")
 def raw_msa_demographic():
 
