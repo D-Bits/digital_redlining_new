@@ -11,6 +11,7 @@ bronze_validations = {
 # Define necessary data validations for silver pipelines
 silver_validations = {
 	'no_null_geoids': 'geo_id IS NOT NULL',
+    # 'geo_id_length_5': 'length(GEO_ID) = 5',
 }
 
 
