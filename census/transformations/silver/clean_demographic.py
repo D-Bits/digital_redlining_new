@@ -48,9 +48,9 @@ def cleaned_demographic():
     raw_msa = spark.read.table("digital_redlining.bronze_census.raw_demographic_msa")
 
     # Drop unnecessary columns
-    raw_county = raw_county.select(["GEO_ID", "P1_001N", "P1_003N", "P1_004N", "P1_005N", "P1_006N", "P1_007N", "P1_008N", "P1_009N", "P2_001N", "P2_002N"])
-    raw_state = raw_state.select(["GEO_ID", "P1_001N", "P1_003N", "P1_004N", "P1_005N", "P1_006N", "P1_007N", "P1_008N", "P1_009N", "P2_001N", "P2_002N"])
-    raw_msa = raw_msa.select(["GEO_ID", "P1_001N", "P1_003N", "P1_004N", "P1_005N", "P1_006N", "P1_007N", "P1_008N", "P1_009N", "P2_001N", "P2_002N"])
+    raw_county = raw_county.select(["GEO_ID", "P1_001N", "P1_003N", "P1_004N", "P1_005N", "P1_006N", "P1_007N", "P1_008N", "P1_009N", "P4_003N", "P2_002N"])
+    raw_state = raw_state.select(["GEO_ID", "P1_001N", "P1_003N", "P1_004N", "P1_005N", "P1_006N", "P1_007N", "P1_008N", "P1_009N", "P4_003N", "P2_002N"])
+    raw_msa = raw_msa.select(["GEO_ID", "P1_001N", "P1_003N", "P1_004N", "P1_005N", "P1_006N", "P1_007N", "P1_008N", "P1_009N", "P4_003N", "P2_002N"])
     
     # Union the county, state, and msa dataframes
     df = raw_county.union(raw_state).union(raw_msa)
@@ -66,7 +66,7 @@ def cleaned_demographic():
         .withColumnRenamed("P1_007N", "pac_islander_population")
         .withColumnRenamed("P1_008N", "other_population")
         .withColumnRenamed("P1_009N", "two_or_more_races")
-        .withColumnRenamed("P2_001N", "hispanic_population")
+        .withColumnRenamed("P4_003N", "hispanic_population")
     )
     df = df.withColumn("geo_id", F.expr("substring(geo_id, 10, length(geo_id))"))
     df = df.withColumn("id", F.monotonically_increasing_id())
