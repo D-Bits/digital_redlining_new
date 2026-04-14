@@ -1,0 +1,96 @@
+{
+  "datasets": [
+    {
+      "name": "c5e42185",
+      "displayName": "white_avg_5g_access",
+      "queryLines": [
+        "WITH white_mobile_5g_speeds AS (\r\n",
+        "    SELECT \r\n",
+        "        digital_redlining.gold_all.fact_geo.geography_desc,\r\n",
+        "        digital_redlining.gold_all.fact_geo.geography_type,\r\n",
+        "        digital_redlining.gold_all.dim_race_proportions.white_prop,\r\n",
+        "        digital_redlining.silver_fcc.clean_mobile.mobilebb_5g_spd1_area_st_pct,\r\n",
+        "        digital_redlining.silver_fcc.clean_mobile.mobilebb_5g_spd1_area_iv_pct,\r\n",
+        "        digital_redlining.silver_fcc.clean_mobile.mobilebb_5g_spd2_area_st_pct,\r\n",
+        "        digital_redlining.silver_fcc.clean_mobile.mobilebb_5g_spd2_area_iv_pct\r\n",
+        "    FROM \r\n",
+        "        digital_redlining.gold_all.fact_geo\r\n",
+        "    INNER JOIN\r\n",
+        "        digital_redlining.gold_all.dim_race_proportions ON digital_redlining.gold_all.fact_geo.geo_id = digital_redlining.gold_all.dim_race_proportions.geo_id\r\n",
+        "    INNER JOIN\r\n",
+        "        digital_redlining.silver_fcc.clean_mobile ON digital_redlining.gold_all.fact_geo.geo_id = digital_redlining.silver_fcc.clean_mobile.geo_id\r\n",
+        "    WHERE white_prop > 0.66\r\n",
+        ")\r\n",
+        "\r\n",
+        "SELECT \r\n",
+        "    AVG(mobilebb_5g_spd1_area_st_pct) AS avg_mobilebb_5g_spd1_area_st_pct,\r\n",
+        "    AVG(mobilebb_5g_spd1_area_iv_pct) AS avg_mobilebb_5g_spd1_area_iv_pct,\r\n",
+        "    AVG(mobilebb_5g_spd2_area_st_pct) AS avg_mobilebb_5g_spd2_area_st_pct,\r\n",
+        "    AVG(mobilebb_5g_spd2_area_iv_pct) AS avg_mobilebb_5g_spd2_area_iv_pct\r\n",
+        "FROM\r\n",
+        "    white_mobile_5g_speeds;\r\n",
+        "\r\n",
+        "-- SELECT * FROM white_mobile_5g_speeds;\r\n",
+        " \r\n",
+        "\r\n"
+      ],
+      "catalog": "digital_redlining",
+      "schema": "gold_all"
+    },
+    {
+      "name": "bd9d19cf",
+      "displayName": "black_avg_5g_access",
+      "queryLines": [
+        "WITH black_mobile_5g_speeds AS (\r\n",
+        "    SELECT \r\n",
+        "        digital_redlining.gold_all.fact_geo.geography_desc,\r\n",
+        "        digital_redlining.gold_all.fact_geo.geography_type,\r\n",
+        "        digital_redlining.gold_all.dim_race_proportions.black_prop,\r\n",
+        "        digital_redlining.silver_fcc.clean_mobile.mobilebb_5g_spd1_area_st_pct,\r\n",
+        "        digital_redlining.silver_fcc.clean_mobile.mobilebb_5g_spd1_area_iv_pct,\r\n",
+        "        digital_redlining.silver_fcc.clean_mobile.mobilebb_5g_spd2_area_st_pct,\r\n",
+        "        digital_redlining.silver_fcc.clean_mobile.mobilebb_5g_spd2_area_iv_pct\r\n",
+        "    FROM \r\n",
+        "        digital_redlining.gold_all.fact_geo\r\n",
+        "    INNER JOIN\r\n",
+        "        digital_redlining.gold_all.dim_race_proportions ON digital_redlining.gold_all.fact_geo.geo_id = digital_redlining.gold_all.dim_race_proportions.geo_id\r\n",
+        "    INNER JOIN\r\n",
+        "        digital_redlining.silver_fcc.clean_mobile ON digital_redlining.gold_all.fact_geo.geo_id = digital_redlining.silver_fcc.clean_mobile.geo_id\r\n",
+        "    WHERE black_prop > 0.66\r\n",
+        ")\r\n",
+        "\r\n",
+        "SELECT \r\n",
+        "    AVG(mobilebb_5g_spd1_area_st_pct) AS avg_mobilebb_5g_spd1_area_st_pct,\r\n",
+        "    AVG(mobilebb_5g_spd1_area_iv_pct) AS avg_mobilebb_5g_spd1_area_iv_pct,\r\n",
+        "    AVG(mobilebb_5g_spd2_area_st_pct) AS avg_mobilebb_5g_spd2_area_st_pct,\r\n",
+        "    AVG(mobilebb_5g_spd2_area_iv_pct) AS avg_mobilebb_5g_spd2_area_iv_pct\r\n",
+        "FROM\r\n",
+        "    black_mobile_5g_speeds;\r\n",
+        "\r\n",
+        "-- SELECT * FROM white_mobile_5g_speeds;\r\n",
+        " \r\n",
+        "\r\n"
+      ]
+    }
+  ],
+  "pages": [
+    {
+      "name": "26b1b2f1",
+      "displayName": "Untitled page",
+      "pageType": "PAGE_TYPE_CANVAS",
+      "layoutVersion": "GRID_V1"
+    },
+    {
+      "name": "5cce669c",
+      "displayName": "Global Filters",
+      "pageType": "PAGE_TYPE_GLOBAL_FILTERS",
+      "layoutVersion": "GRID_V1"
+    }
+  ],
+  "uiSettings": {
+    "theme": {
+      "widgetHeaderAlignment": "ALIGNMENT_UNSPECIFIED"
+    },
+    "applyModeEnabled": false
+  }
+}

@@ -8,16 +8,20 @@
 
 # COMMAND ----------
 
-!pip freeze
+df = spark.read.table("digital_redlining.bronze_census.raw_demographic_msa")
+
+# COMMAND ----------
+
+display(df)
 
 # COMMAND ----------
 
 import sys
 
-sys.path.append("/Repos/digital_redlining/digital_redlining_new/New Pipeline 2026-02-01 15:13")
+sys.path.append("/Repos/digital_redlining/digital_redlining_new/gold_all")
 
 # COMMAND ----------
 
 # !!! Before performing any data analysis, make sure to run the pipeline to materialize the sample datasets. The tables referenced in this notebook depend on that step.
 
-display(spark.sql("SELECT * FROM workspace.default.sample_aggregation_feb_1_1513"))
+display(spark.sql("SELECT * FROM digital_redlining.gold_all.sample_aggregation_gold_all"))
