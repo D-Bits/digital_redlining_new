@@ -42,7 +42,8 @@
       "displayName": "black_avg_5g_access",
       "queryLines": [
         "WITH black_mobile_5g_speeds AS (\r\n",
-        "    SELECT \r\n",
+        "    SELECT\r\n",
+        "        digital_redlining.gold_all.fact_geo.geo_id, \r\n",
         "        digital_redlining.gold_all.fact_geo.geography_desc,\r\n",
         "        digital_redlining.gold_all.fact_geo.geography_type,\r\n",
         "        digital_redlining.gold_all.dim_race_proportions.black_prop,\r\n",
@@ -76,14 +77,272 @@
   "pages": [
     {
       "name": "26b1b2f1",
-      "displayName": "Untitled page",
+      "displayName": "bar_charts",
+      "layout": [
+        {
+          "widget": {
+            "name": "white-5g-mobile-access-1",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "c5e42185",
+                  "fields": [
+                    {
+                      "name": "sum(avg_mobilebb_5g_spd1_area_iv_pct)",
+                      "expression": "SUM(`avg_mobilebb_5g_spd1_area_iv_pct`)"
+                    },
+                    {
+                      "name": "sum(avg_mobilebb_5g_spd1_area_st_pct)",
+                      "expression": "SUM(`avg_mobilebb_5g_spd1_area_st_pct`)"
+                    },
+                    {
+                      "name": "sum(avg_mobilebb_5g_spd2_area_iv_pct)",
+                      "expression": "SUM(`avg_mobilebb_5g_spd2_area_iv_pct`)"
+                    },
+                    {
+                      "name": "sum(avg_mobilebb_5g_spd2_area_st_pct)",
+                      "expression": "SUM(`avg_mobilebb_5g_spd2_area_st_pct`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "frame": {
+                "showTitle": true,
+                "title": "White 5G Mobile Access"
+              },
+              "widgetType": "bar",
+              "encodings": {
+                "y": {
+                  "scale": {
+                    "type": "quantitative"
+                  },
+                  "fields": [
+                    {
+                      "fieldName": "sum(avg_mobilebb_5g_spd1_area_iv_pct)"
+                    },
+                    {
+                      "fieldName": "sum(avg_mobilebb_5g_spd1_area_st_pct)"
+                    },
+                    {
+                      "fieldName": "sum(avg_mobilebb_5g_spd2_area_iv_pct)"
+                    },
+                    {
+                      "fieldName": "sum(avg_mobilebb_5g_spd2_area_st_pct)"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 0,
+            "width": 6,
+            "height": 6
+          }
+        },
+        {
+          "widget": {
+            "name": "black-5g-mobile-access",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "bd9d19cf",
+                  "fields": [
+                    {
+                      "name": "sum(avg_mobilebb_5g_spd1_area_iv_pct)",
+                      "expression": "SUM(`avg_mobilebb_5g_spd1_area_iv_pct`)"
+                    },
+                    {
+                      "name": "sum(avg_mobilebb_5g_spd1_area_st_pct)",
+                      "expression": "SUM(`avg_mobilebb_5g_spd1_area_st_pct`)"
+                    },
+                    {
+                      "name": "sum(avg_mobilebb_5g_spd2_area_iv_pct)",
+                      "expression": "SUM(`avg_mobilebb_5g_spd2_area_iv_pct`)"
+                    },
+                    {
+                      "name": "sum(avg_mobilebb_5g_spd2_area_st_pct)",
+                      "expression": "SUM(`avg_mobilebb_5g_spd2_area_st_pct`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "frame": {
+                "showTitle": true,
+                "title": "black_5g_mobile_access"
+              },
+              "widgetType": "bar",
+              "encodings": {
+                "x": {
+                  "scale": {
+                    "type": "quantitative"
+                  },
+                  "fields": [
+                    {
+                      "fieldName": "sum(avg_mobilebb_5g_spd1_area_iv_pct)"
+                    },
+                    {
+                      "fieldName": "sum(avg_mobilebb_5g_spd1_area_st_pct)"
+                    },
+                    {
+                      "fieldName": "sum(avg_mobilebb_5g_spd2_area_iv_pct)"
+                    },
+                    {
+                      "fieldName": "sum(avg_mobilebb_5g_spd2_area_st_pct)"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "position": {
+            "x": 6,
+            "y": 0,
+            "width": 6,
+            "height": 6
+          }
+        }
+      ],
       "pageType": "PAGE_TYPE_CANVAS",
       "layoutVersion": "GRID_V1"
     },
     {
       "name": "5cce669c",
       "displayName": "Global Filters",
+      "layout": [
+        {
+          "widget": {
+            "name": "8d159c9e",
+            "queries": [
+              {
+                "name": "dashboards/01f13209ba641a37b9471ae9785f53df/datasets/01f1320e1c611508a23e0439463f6764_avg_mobilebb_5g_spd1_area_iv_pct",
+                "query": {
+                  "datasetName": "c5e42185",
+                  "fields": [
+                    {
+                      "name": "avg_mobilebb_5g_spd1_area_iv_pct",
+                      "expression": "`avg_mobilebb_5g_spd1_area_iv_pct`"
+                    },
+                    {
+                      "name": "avg_mobilebb_5g_spd1_area_iv_pct_associativity",
+                      "expression": "COUNT_IF(`associative_filter_predicate_group`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              },
+              {
+                "name": "dashboards/01f13209ba641a37b9471ae9785f53df/datasets/01f13212bade10ed83e7928bcc4843f6_avg_mobilebb_5g_spd1_area_st_pct",
+                "query": {
+                  "datasetName": "bd9d19cf",
+                  "fields": [
+                    {
+                      "name": "avg_mobilebb_5g_spd1_area_st_pct",
+                      "expression": "`avg_mobilebb_5g_spd1_area_st_pct`"
+                    },
+                    {
+                      "name": "avg_mobilebb_5g_spd1_area_st_pct_associativity",
+                      "expression": "COUNT_IF(`associative_filter_predicate_group`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "showTitle": true,
+                "title": ""
+              },
+              "widgetType": "filter-multi-select",
+              "encodings": {
+                "fields": [
+                  {
+                    "fieldName": "avg_mobilebb_5g_spd1_area_iv_pct",
+                    "queryName": "dashboards/01f13209ba641a37b9471ae9785f53df/datasets/01f1320e1c611508a23e0439463f6764_avg_mobilebb_5g_spd1_area_iv_pct"
+                  },
+                  {
+                    "fieldName": "avg_mobilebb_5g_spd1_area_st_pct",
+                    "queryName": "dashboards/01f13209ba641a37b9471ae9785f53df/datasets/01f13212bade10ed83e7928bcc4843f6_avg_mobilebb_5g_spd1_area_st_pct"
+                  }
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 0,
+            "width": 1,
+            "height": 2
+          }
+        }
+      ],
       "pageType": "PAGE_TYPE_GLOBAL_FILTERS",
+      "layoutVersion": "GRID_V1"
+    },
+    {
+      "name": "27177c5e",
+      "displayName": "Untitled page",
+      "layout": [
+        {
+          "widget": {
+            "name": "1e34b676",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "bd9d19cf",
+                  "fields": [
+                    {
+                      "name": "sum(avg_mobilebb_5g_spd1_area_iv_pct)",
+                      "expression": "SUM(`avg_mobilebb_5g_spd1_area_iv_pct`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "widgetType": "bar",
+              "encodings": {
+                "x": {
+                  "scale": {
+                    "type": "quantitative"
+                  },
+                  "fields": [
+                    {
+                      "fieldName": "sum(avg_mobilebb_5g_spd1_area_iv_pct)"
+                    },
+                    {
+                      "fieldName": "sum(avg_mobilebb_5g_spd1_area_iv_pct)"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "position": {
+            "x": 2,
+            "y": 1,
+            "width": 6,
+            "height": 6
+          }
+        }
+      ],
+      "pageType": "PAGE_TYPE_CANVAS",
       "layoutVersion": "GRID_V1"
     }
   ],
